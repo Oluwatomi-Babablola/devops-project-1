@@ -9,7 +9,7 @@ variable "user_data_install_apache" {}
 variable "ec2_sg_name_for_python_api" {}
 
 output "ssh_connection_string_for_ec2" {
-  value = format("%s%s", "ssh -i /Users/boluw/cba-jenkeypair.pem", aws_instance.dev_proj_1_ec2.public_ip)
+  value = format("%s%s", "ssh -i /Users/boluw/Downloads/cba_jenkins.pem", aws_instance.dev_proj_1_ec2.public_ip)
 }
 
 output "dev_proj_1_ec2_instance_id" {
@@ -22,7 +22,7 @@ resource "aws_instance" "dev_proj_1_ec2" {
   tags = {
     Name = var.tag_name
   }
-  key_name                    = "cba-jenkeypair"
+  key_name                    = "cba_jenkins"
   subnet_id                   = var.subnet_id
   vpc_security_group_ids      = [var.sg_enable_ssh_https, var.ec2_sg_name_for_python_api]
   associate_public_ip_address = var.enable_public_ip_address
